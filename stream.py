@@ -2,16 +2,19 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import snowflake.connector
+import os 
+from dotenv import load_dotenv
 
 # Streamlit page setup
+load_dotenv()
 st.set_page_config(page_title="Job Analytics Dashboard", layout="wide")
 st.title("📊 Job Analytics Dashboard (Snowflake + Plotly)")
 
 # Snowflake config
 config = {
     "user": "bodkhevj",
-    "password": "JayeshShete@1512",
-    "account": "FECHZKS-MI93361",
+    "password": os.getenv('PASSWORD'),
+    "account": os.getenv('ACCOUNT'),
     "warehouse": "PROJECT_WH",
     "database": "JOBS_DB",
     "schema": "JOBS_SCHEMA"
